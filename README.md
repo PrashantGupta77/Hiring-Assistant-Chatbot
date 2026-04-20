@@ -35,7 +35,7 @@ It performs:
 
 ## 🏗️ System Architecture
 
-
+```text
 User (Streamlit UI)
 ↓
 Conversation Manager (State Machine)
@@ -43,7 +43,7 @@ Conversation Manager (State Machine)
 Service Layer (Business Logic)
 ↓
 LLM (Groq - LLaMA)
-
+```
 
 ---
 
