@@ -49,48 +49,47 @@ LLM (Groq - LLaMA)
 
 ## 📁 Project Structure
 
-
+```text
 Hiring-Assistant-Chatbot/
 │
-├── config/ # Configuration
-│ ├── constants.py # Tech keywords, exit commands
-│ └── settings.py # Environment variables & model config
+├── config/
+│   ├── constants.py              # Tech keywords, exit commands
+│   └── settings.py               # Environment variables & model config
 │
 ├── src/
-│ ├── core/ # Conversation logic
-│ │ ├── conversation_manager.py
-│ │ └── state_machine.py
-│ │
-│ ├── models/ # Data models
-│ │ ├── candidate.py
-│ │ ├── session.py
-│ │ └── screening_result.py
-│ │
-│ ├── prompts/ # Prompt templates
-│ │ ├── evaluation_prompt.py
-│ │ └── question_generation_prompt.py
-│ │
-│ ├── services/ # Business logic
-│ │ ├── candidate_service.py
-│ │ ├── llm_service.py
-│ │ ├── question_service.py
-│ │ ├── resume_service.py
-│ │ └── scoring_service.py
-│ │
-│ ├── ui/ # Streamlit UI helpers
-│ │ ├── components.py
-│ │ └── streamlit_app.py
-│ │
-│ └── utils/ # Helper utilities
-│ ├── tech_normalizer.py
-│ └── validators.py
+│   ├── core/
+│   │   ├── conversation_manager.py
+│   │   └── state_machine.py
+│   │
+│   ├── models/
+│   │   ├── candidate.py
+│   │   ├── session.py
+│   │   └── screening_result.py
+│   │
+│   ├── prompts/
+│   │   ├── evaluation_prompt.py
+│   │   └── question_generation_prompt.py
+│   │
+│   ├── services/
+│   │   ├── candidate_service.py
+│   │   ├── llm_service.py
+│   │   ├── question_service.py
+│   │   ├── resume_service.py
+│   │   └── scoring_service.py
+│   │
+│   ├── ui/
+│   │   ├── components.py
+│   │   └── streamlit_app.py
+│   │
+│   └── utils/
+│       ├── tech_normalizer.py
+│       └── validators.py
 │
-├── app.py # Main Streamlit entry point
-├── .env.example # Environment template
+├── app.py                        # Main Streamlit entry point
+├── .env.example                  # Environment template
 ├── requirements.txt
 ├── README.md
 └── .gitignore
-
 
 ---
 
