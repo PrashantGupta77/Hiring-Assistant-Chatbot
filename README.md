@@ -91,6 +91,8 @@ Hiring-Assistant-Chatbot/
 ├── README.md
 └── .gitignore
 
+```
+
 ---
 
 ## 🔄 Application Workflow
