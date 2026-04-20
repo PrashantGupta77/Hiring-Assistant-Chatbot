@@ -1,158 +1,193 @@
-🤖 TalentScout Hiring Assistant
+# 🤖 TalentScout Hiring Assistant
 
 AI-powered chatbot for automating the initial technical screening process of candidates using LLMs and conversational workflows.
 
-🚀 Live Demo
+---
 
+## 🚀 Live Demo
 https://prashantgupta77-hiring-assistant-chatbot-app-qmvjii.streamlit.app/
 
-📌 Project Overview
+---
+
+## 📌 Project Overview
 
 TalentScout Hiring Assistant simulates a recruiter-like interaction to streamline candidate screening.
 
 It performs:
-
 - Candidate information collection
 - Resume parsing and data extraction
 - Tech stack-based question generation
 - AI-driven answer evaluation
 - Final screening summary with recommendation
 
-✨ Key Features -
-💬 Conversational chatbot interface
-📄 Resume upload (PDF, DOCX, TXT)
-🧠 LLM-based technical question generation
-📊 Automated scoring and feedback
-📈 Final hiring recommendation
-🔁 State-machine based flow control
+---
 
-🏗️ System Architecture -
+## ✨ Key Features
+
+- 💬 Conversational chatbot interface  
+- 📄 Resume upload (PDF, DOCX, TXT)  
+- 🧠 LLM-based technical question generation  
+- 📊 Automated scoring and feedback  
+- 📈 Final hiring recommendation  
+- 🔁 State-machine based flow control  
+
+---
+
+## 🏗️ System Architecture
+
+
 User (Streamlit UI)
-        ↓
+↓
 Conversation Manager (State Machine)
-        ↓
+↓
 Service Layer (Business Logic)
-        ↓
+↓
 LLM (Groq - LLaMA)
 
-📁 Project Structure -
+
+---
+
+## 📁 Project Structure
+
+
 Hiring-Assistant-Chatbot/
 │
-├── config/                         # Configuration
-│   ├── constants.py               # Tech keywords, exit commands
-│   └── settings.py                # Environment variables & model config
+├── config/ # Configuration
+│ ├── constants.py # Tech keywords, exit commands
+│ └── settings.py # Environment variables & model config
 │
 ├── src/
-│   ├── core/                      # Conversation logic
-│   │   ├── conversation_manager.py
-│   │   └── state_machine.py
-│   │
-│   ├── models/                    # Data models
-│   │   ├── candidate.py
-│   │   ├── session.py
-│   │   └── screening_result.py
-│   │
-│   ├── prompts/                   # Prompt templates
-│   │   ├── evaluation_prompt.py
-│   │   └── question_generation_prompt.py
-│   │
-│   ├── services/                  # Business logic
-│   │   ├── candidate_service.py
-│   │   ├── llm_service.py
-│   │   ├── question_service.py
-│   │   ├── resume_service.py
-│   │   └── scoring_service.py
-│   │
-│   ├── ui/                        # Streamlit UI helpers
-│   │   ├── components.py
-│   │   └── streamlit_app.py
-│   │
-│   └── utils/                     # Helper utilities
-│       ├── tech_normalizer.py
-│       └── validators.py
+│ ├── core/ # Conversation logic
+│ │ ├── conversation_manager.py
+│ │ └── state_machine.py
+│ │
+│ ├── models/ # Data models
+│ │ ├── candidate.py
+│ │ ├── session.py
+│ │ └── screening_result.py
+│ │
+│ ├── prompts/ # Prompt templates
+│ │ ├── evaluation_prompt.py
+│ │ └── question_generation_prompt.py
+│ │
+│ ├── services/ # Business logic
+│ │ ├── candidate_service.py
+│ │ ├── llm_service.py
+│ │ ├── question_service.py
+│ │ ├── resume_service.py
+│ │ └── scoring_service.py
+│ │
+│ ├── ui/ # Streamlit UI helpers
+│ │ ├── components.py
+│ │ └── streamlit_app.py
+│ │
+│ └── utils/ # Helper utilities
+│ ├── tech_normalizer.py
+│ └── validators.py
 │
-├── app.py                         # Main Streamlit entry point
-├── .env.example                  # Environment template
+├── app.py # Main Streamlit entry point
+├── .env.example # Environment template
 ├── requirements.txt
 ├── README.md
 └── .gitignore
 
-🔄 Application Workflow :
 
-- User starts the chatbot
-- Resume upload (optional)
-- Resume data extraction
-- Missing details collected via chat
-- Technical questions generated
-- Candidate answers questions
-- Answers evaluated using LLM
-- Final screening summary generated
+---
 
-🧠 Core Components :
+## 🔄 Application Workflow
 
-Conversation Manager -
+- User starts the chatbot  
+- Resume upload (optional)  
+- Resume data extraction  
+- Missing details collected via chat  
+- Technical questions generated  
+- Candidate answers questions  
+- Answers evaluated using LLM  
+- Final screening summary generated  
+
+---
+
+## 🧠 Core Components
+
+### Conversation Manager
 Controls the entire chatbot flow using a state machine.
 
-Resume Service -
+### Resume Service
 Extracts structured data from resumes and cleans tech stack.
 
-Question Service -
+### Question Service
 Generates role-specific technical questions using LLM.
 
-Scoring Service -
+### Scoring Service
 Evaluates answers and returns score + feedback.
 
-Candidate Service -
+### Candidate Service
 Builds final summary and hiring recommendation.
 
-LLM Service -
+### LLM Service
 Handles interaction with Groq API.
 
-⚙️ Setup & Installation :
+---
 
-1️⃣ Clone Repository -
-git clone https://github.com/PrashantGupta77/Hiring-Assistant-Chatbot.git
-cd Hiring-Assistant-Chatbot
+## ⚙️ Setup & Installation
 
-2️⃣ Create Virtual Environment -
-python -m venv venv
-source venv/bin/activate      # Mac/Linux
-venv\Scripts\activate         # Windows
+### 1️⃣ Clone Repository
+git clone https://github.com/PrashantGupta77/Hiring-Assistant-Chatbot.git  
+cd Hiring-Assistant-Chatbot  
 
-3️⃣ Install Dependencies -
-pip install -r requirements.txt
+### 2️⃣ Create Virtual Environment
+python -m venv venv  
+source venv/bin/activate      (Mac/Linux)  
+venv\Scripts\activate         (Windows)  
 
-4️⃣ Configure Environment -
+### 3️⃣ Install Dependencies
+pip install -r requirements.txt  
 
-Create .env file:
+### 4️⃣ Configure Environment
 
-GROQ_API_KEY=your_api_key_here
-MODEL_NAME=llama-3.1-8b-instant
+Create a `.env` file:
 
-▶️ Run the Application -
-streamlit run app.py
+GROQ_API_KEY=your_api_key_here  
+MODEL_NAME=llama-3.1-8b-instant  
 
-⚠️ Challenges & Solutions :
+---
 
-Tech stack noise from resume
-→ Improved extraction using section-based parsing and normalization
+## ▶️ Run the Application
 
-Multi-step conversation handling
-→ Implemented state-machine architecture
+streamlit run app.py  
 
-LLM output inconsistency
-→ Used structured prompts and parsing
+---
 
-🔮 Future Improvements -
-FastAPI backend for scalability
-Database integration
-Advanced NLP resume parsing
-Multi-language support
+## ⚠️ Challenges & Solutions
 
-🔐 Data Handling -
-No persistent storage
-Session-based processing
-Safe for demo and prototype use
+**Tech stack noise from resume**  
+→ Improved extraction using section-based parsing and normalization  
 
-👨‍💻 Author
-Prashant Kumar Gupta
+**Multi-step conversation handling**  
+→ Implemented state-machine architecture  
+
+**LLM output inconsistency**  
+→ Used structured prompts and parsing  
+
+---
+
+## 🔮 Future Improvements
+
+- FastAPI backend for scalability  
+- Database integration  
+- Advanced NLP resume parsing  
+- Multi-language support  
+
+---
+
+## 🔐 Data Handling
+
+- No persistent storage  
+- Session-based processing  
+- Safe for demo and prototype use  
+
+---
+
+## 👨‍💻 Author
+
+**Prashant Kumar Gupta**
