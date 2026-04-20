@@ -12,25 +12,32 @@ def normalize_tech_stack(raw_input: str) -> List[str]:
     'python, django, postgres, docker'
     ->
     ['Python', 'Django', 'PostgreSQL', 'Docker']
+
+    Improvements:
+    - More conservative matching
+    - Exact token/phrase matching preferred
+    - Reduces false positives from long resume text
     """
     if not raw_input or not raw_input.strip():
         return []
 
     text = raw_input.lower()
 
-    # Split on commas, slashes, semicolons, pipes
-    parts = re.split(r"[,/;|]+", text)
+    # Split on common delimiters and line breaks
+    parts = re.split(r"[,/;|\n]+", text)
 
-    normalized = []
+    normalized: List[str] = []
     seen = set()
 
     for part in parts:
         cleaned = part.strip()
-
         if not cleaned:
             continue
 
-        # direct match
+        # Normalize internal spacing
+        cleaned = re.sub(r"\s+", " ", cleaned)
+
+        # 1. Direct exact match
         if cleaned in SUPPORTED_TECH_KEYWORDS:
             tech = SUPPORTED_TECH_KEYWORDS[cleaned]
             if tech not in seen:
@@ -38,12 +45,13 @@ def normalize_tech_stack(raw_input: str) -> List[str]:
                 seen.add(tech)
             continue
 
-        # partial keyword match
+        # 2. Conservative phrase match using word boundaries
         for keyword, standard_name in SUPPORTED_TECH_KEYWORDS.items():
-            if keyword in cleaned:
+            pattern = r"\b" + re.escape(keyword) + r"\b"
+            if re.search(pattern, cleaned):
                 if standard_name not in seen:
                     normalized.append(standard_name)
                     seen.add(standard_name)
                 break
 
-    return normalized
+    return normalized[:12]
