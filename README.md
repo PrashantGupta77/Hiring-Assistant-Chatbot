@@ -53,43 +53,43 @@ LLM (Groq - LLaMA)
 Hiring-Assistant-Chatbot/
 │
 ├── config/
-│   ├── constants.py              # Tech keywords, exit commands
-│   └── settings.py               # Environment variables & model config
+│   ├── constants.py        # Predefined tech keywords, exit commands
+│   └── settings.py         # Environment variables and model configuration
 │
 ├── src/
 │   ├── core/
-│   │   ├── conversation_manager.py
-│   │   └── state_machine.py
+│   │   ├── conversation_manager.py   # Controls conversation flow
+│   │   └── state_machine.py          # Handles chatbot state transitions
 │   │
 │   ├── models/
-│   │   ├── candidate.py
-│   │   ├── session.py
-│   │   └── screening_result.py
+│   │   ├── candidate.py              # Candidate data model
+│   │   ├── session.py                # Session state tracking
+│   │   └── screening_result.py       # Final evaluation result structure
 │   │
 │   ├── prompts/
-│   │   ├── evaluation_prompt.py
-│   │   └── question_generation_prompt.py
+│   │   ├── evaluation_prompt.py      # Prompt for answer evaluation
+│   │   └── question_generation_prompt.py  # Prompt for generating questions
 │   │
 │   ├── services/
-│   │   ├── candidate_service.py
-│   │   ├── llm_service.py
-│   │   ├── question_service.py
-│   │   ├── resume_service.py
-│   │   └── scoring_service.py
+│   │   ├── candidate_service.py      # Builds final candidate summary
+│   │   ├── llm_service.py            # Handles Groq API calls
+│   │   ├── question_service.py       # Generates technical questions
+│   │   ├── resume_service.py         # Parses and extracts resume data
+│   │   └── scoring_service.py        # Evaluates answers and assigns scores
 │   │
 │   ├── ui/
-│   │   ├── components.py
-│   │   └── streamlit_app.py
+│   │   ├── components.py             # Reusable UI components
+│   │   └── streamlit_app.py          # Main Streamlit UI logic
 │   │
 │   └── utils/
-│       ├── tech_normalizer.py
-│       └── validators.py
+│       ├── tech_normalizer.py        # Normalizes tech stack terms
+│       └── validators.py             # Input validation helpers
 │
-├── app.py                        # Main Streamlit entry point
-├── .env.example                  # Environment template
-├── requirements.txt
-├── README.md
-└── .gitignore
+├── app.py                    # Entry point to launch the app
+├── .env.example              # Sample environment variables
+├── requirements.txt          # Project dependencies
+├── README.md                 # Project documentation
+└── .gitignore                # Ignored files
 
 ```
 
