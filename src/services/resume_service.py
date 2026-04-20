@@ -139,19 +139,50 @@ class ResumeService:
 
     @staticmethod
     def _extract_tech_stack(text: str) -> List[str]:
-        lines = text.splitlines()
+        """
+        Extract tech stack more conservatively:
+        1. Prefer explicit skills/technologies/tools sections
+        2. Only use nearby lines under those headings
+        3. Fall back to a limited chunk of resume text if no section is found
+        """
+        if not text:
+            return []
 
-        possible_stack_lines = []
-        for line in lines:
-            lowered = line.lower()
-            if any(
-                keyword in lowered
-                for keyword in ["skills", "technical skills", "tech stack", "technologies", "tools"]
+        lines = [line.strip() for line in text.splitlines() if line.strip()]
+
+        section_keywords = {
+            "skills",
+            "technical skills",
+            "tech stack",
+            "technologies",
+            "tools",
+            "frameworks",
+            "libraries",
+        }
+
+        captured_lines: List[str] = []
+
+        for i, line in enumerate(lines):
+            lowered = line.lower().strip(" :|-")
+            if lowered in section_keywords or any(
+                keyword in lowered for keyword in section_keywords
             ):
-                possible_stack_lines.append(line)
+                captured_lines.append(line)
 
-        combined_text = text
-        if possible_stack_lines:
-            combined_text = "\n".join(possible_stack_lines) + "\n" + text
+                for next_line in lines[i + 1 : i + 5]:
+                    next_lower = next_line.lower().strip()
+
+                    if (
+                        len(next_line.split()) <= 2
+                        and next_lower in section_keywords
+                    ):
+                        break
+
+                    captured_lines.append(next_line)
+
+        if captured_lines:
+            combined_text = "\n".join(captured_lines)
+        else:
+            combined_text = text[:1000]
 
         return normalize_tech_stack(combined_text)
